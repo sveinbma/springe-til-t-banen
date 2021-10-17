@@ -2,6 +2,7 @@
   "name": "springe-til-t-banen",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sveinbma.github.io/springe-til-t-banen/",
   "dependencies": {
     "@entur/sdk": "^4.2.2",
     "@testing-library/jest-dom": "^5.11.4",
