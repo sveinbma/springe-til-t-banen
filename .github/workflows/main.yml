@@ -23,13 +23,10 @@ jobs:
         node-version: 13.x
     
     - name: Install NPM packages
-      run: npm ci
+      run: yarn install --frozen-lockfile
     
     - name: Build project
-      run: npm run build
-    
-    - name: Run tests
-      run: npm run test
+      run: yarn build
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
