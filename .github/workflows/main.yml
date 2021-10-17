@@ -7,6 +7,10 @@ on:
   pull_request:
     branches:
       - main
+      
+defaults:
+  run:
+    working-directory: ./springe-til-t-banen
 
 jobs:
   build:
