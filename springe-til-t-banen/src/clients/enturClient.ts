@@ -4,10 +4,12 @@ const enturClient = createEnturClient({ clientName: 'hobbyprosjekt-springetiltba
 
 export const getRealTimeTrips = async (fromStop: string, toStop: string) => {
   const trips = await enturClient.getTripPatterns({ from: { place: fromStop }, to: { place: toStop } });
-  console.log(trips);
+  // console.log(trips);
   return trips;
 };
 
-export const getMatchingStopPlaces = (searchString: string) => {
-
+export const getDepartures = async (fromStop: string, toStop: string) => {
+  const departures = await enturClient.getDeparturesBetweenStopPlaces(fromStop, toStop, { limit: 6 });
+  console.log(departures);
+  return departures;
 };
