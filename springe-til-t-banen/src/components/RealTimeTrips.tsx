@@ -1,5 +1,5 @@
 import React from 'react';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { getDepartures } from '../clients/enturClient';
 import { getTimePart } from '../utils/dateUtils';
 import { LiveClock } from './LiveClock';
@@ -11,6 +11,7 @@ export const RealTimeTrips = () => {
   const [departureStop, setDepartureStop] = React.useState(BolerStopId);
   const [arrivalStop, setArrivalStop] = React.useState(GronlandStopId);
   const { data: departures } = useSWR('trips', () => getDepartures(departureStop, arrivalStop));
+  const { mutate } = useSWRConfig();
   if (!departures) {
     return <p>Laster data...</p>;
   }
@@ -23,6 +24,7 @@ export const RealTimeTrips = () => {
       const oldDeparture = departureStop;
       setDepartureStop(arrivalStop);
       setArrivalStop(oldDeparture);
+      mutate('trips');
     }}>Bytt</button>
     <LiveClock />
     {departures.map((departure, i) => {
